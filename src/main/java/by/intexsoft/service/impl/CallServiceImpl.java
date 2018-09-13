@@ -18,7 +18,7 @@ import java.util.Optional;
 @Slf4j
 @AllArgsConstructor
 public class CallServiceImpl implements CallService {
-    private CallRepository callRepository;
+    private final CallRepository callRepository;
 
     /**
      * {@inheritDoc}

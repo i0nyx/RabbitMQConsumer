@@ -24,8 +24,7 @@ import java.util.Objects;
 @EnableCassandraRepositories(basePackages = {"by.intexsoft.repositories"})
 @AllArgsConstructor
 public class CassandraConfig extends AbstractCassandraConfiguration {
-
-    private Environment env;
+    private final Environment env;
 
     /**
      * {@inheritDoc}

@@ -21,7 +21,7 @@ public class Listener {
     /**
      * Method listen RabbitMQ queue and send {@link Message} in log
      *
-     * @param message
+     * @param message Data received from the queue
      */
     @RabbitListener(queues = QUEUE_ONE)
     public void messageListenerOne(Message message) {
@@ -32,7 +32,7 @@ public class Listener {
      * Method listen RabbitMQ queue and send {@link Message} in log
      * and in {@link CallService}
      *
-     * @param message
+     * @param message Data received from the queue
      */
     @RabbitListener(queues = QUEUE_TWO)
     public void messageListenerTwo(Message message) {
