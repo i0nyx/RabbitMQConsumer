@@ -15,21 +15,29 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-
+/**
+ * Class for Cassandra configuration using JavaConfig
+ */
 @Configuration
 @PropertySource("classpath:cassandra.properties")
 @ComponentScan("by.intexsoft")
 @EnableCassandraRepositories(basePackages = {"by.intexsoft.repositories"})
 @AllArgsConstructor
-public class CassandraConf extends AbstractCassandraConfiguration {
+public class CassandraConfig extends AbstractCassandraConfiguration {
 
     private Environment env;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected String getKeyspaceName() {
         return env.getProperty("cassandra.keyspace");
     }
 
+    /**
+     * Create a {@link CassandraClusterFactoryBean}.
+     */
     @Bean
     public CassandraClusterFactoryBean cluster() {
         CassandraClusterFactoryBean cluster = new CassandraClusterFactoryBean();
@@ -38,14 +46,20 @@ public class CassandraConf extends AbstractCassandraConfiguration {
         return cluster;
     }
 
+    /**
+     * Create a {@link CassandraMappingContext}
+     */
     @Bean
     public CassandraMappingContext cassandraMappingContext() {
         return new CassandraMappingContext();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected List<String> getStartupScripts() {
-        return Collections.singletonList("CREATE TABLE IF NOT EXISTS "+getKeyspaceName()+".call(id UUID PRIMARY KEY, date timestamp, message text) WITH default_time_to_live = 600;");
+        return Collections.singletonList("CREATE TABLE IF NOT EXISTS " + getKeyspaceName() + ".call(id UUID PRIMARY KEY, date timestamp, message text);");
     }
 
 }
