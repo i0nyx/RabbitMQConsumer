@@ -64,5 +64,4 @@ public class CallServiceTest {
     private Call buildCall() {
         return Call.builder().id(randomUUID()).message("Test").date(new Date()).build();
     }
-
 }
