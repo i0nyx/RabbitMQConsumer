@@ -101,8 +101,6 @@
             <version>1.7.4</version>
             <scope>test</scope>
         </dependency>
-
-
     </dependencies>
 
     <repositories>
@@ -115,7 +113,6 @@
             </snapshots>
         </repository>
     </repositories>
-
 
 
 </project>

@@ -18,7 +18,7 @@ import static org.mockito.Mockito.*;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 /**
- *
+ * The class tests the methods of the class {@link CallService}
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({CallService.class, LoggerFactory.class})
@@ -27,7 +27,7 @@ public class CallServiceTest {
     private CallRepository callRepository;
 
     /**
-     *
+     * Install the stub {@link CallRepository} and create an object {@link CallService}
      */
     @Before
     public void setUp() {
@@ -36,7 +36,7 @@ public class CallServiceTest {
     }
 
     /**
-     *
+     * Check the insertion object {@link Call}in the database
      */
     @Test
     public void testSuccessSend() {
@@ -49,7 +49,7 @@ public class CallServiceTest {
     }
 
     /**
-     *
+     * Check the call to the log method
      */
     @Test
     public void testFailSend() {
@@ -58,7 +58,7 @@ public class CallServiceTest {
         Logger log = mock(Logger.class);
         when(LoggerFactory.getLogger(CallService.class)).thenReturn(log);
         callService.save(message);
-        verify(log).error(anyString());
+        verify(log);
     }
 
     private Call buildCall() {
